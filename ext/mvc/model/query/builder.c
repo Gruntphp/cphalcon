@@ -1003,6 +1003,8 @@ PHP_METHOD(Phalcon_Mvc_Model_Query_Builder, inWhere){
 	if (Z_TYPE_P(values) != IS_ARRAY) { 
 		PHALCON_THROW_EXCEPTION_STR(phalcon_mvc_model_exception_ce, "Values must be an array");
 		return;
+	} else if (!phalcon_fast_count_ev(values TSRMLS_CC)) {
+		RETURN_THIS();
 	}
 	
 	PHALCON_OBS_VAR(hidden_param);
