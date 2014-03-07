@@ -337,9 +337,12 @@ class ModelsCriteriaTest extends PHPUnit_Framework_TestCase
 	{
 		$di->set('modelsCache', function(){
 			$frontCache = new Phalcon\Cache\Frontend\Data();
-			return new Phalcon\Cache\Backend\File($frontCache, array(
+			$modelsCache = new Phalcon\Cache\Backend\File($frontCache, array(
 				'cacheDir' => 'unit-tests/cache/'
 			));
+
+			$modelsCache->delete("cache-2131");
+			return $modelsCache;
 		}, true);
 
 		$personas = Personas::query()->where("estado='I'")->cache(array("key" => "cache-2131"))->execute();
