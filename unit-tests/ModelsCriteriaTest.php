@@ -333,7 +333,7 @@ class ModelsCriteriaTest extends PHPUnit_Framework_TestCase
 		));
 	}
 	
-	public function _executeTestIssues2131()
+	public function _executeTestIssues2131($di)
 	{
 		$di->set('modelsCache', function(){
 			$frontCache = new Phalcon\Cache\Frontend\Data();
